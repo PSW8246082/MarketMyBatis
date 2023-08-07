@@ -2,7 +2,10 @@ package customer.model.service;
 
 import java.sql.*;
 
+import org.apache.ibatis.session.SqlSession;
+
 import common.JDBCTemplate;
+import common.SqlSessionTemplate;
 import customer.model.dao.CustomerDAO;
 import customer.model.vo.Customer;
 
@@ -27,69 +30,103 @@ public class CustomerService {
 	
 	public Customer selectCheckLogin(Customer market) {
 		//연결생성
-		Connection conn = jdbcTemplate.createConnection();
+		//Connection conn = jdbcTemplate.createConnection();
 		//DAO호출 (연결도 넘겨줘야함)
-		Customer cOne = cDao.selectCheckLogin(conn, market);
+		//Customer cOne = cDao.selectCheckLogin(conn, market);
 		//커밋/롤백은 SELECT에서 안해줘도 된다. 할 필요가 없음 저장하고 롤백할 필요 없으니까
+		//return cOne;
+		
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		Customer cOne = cDao.selectCheckLogin(session, market);
 		return cOne;
 	}
 
 	public int insertCustomer(Customer customer) {
 		//연결생성
-		Connection conn = jdbcTemplate.createConnection();
+		//Connection conn = jdbcTemplate.createConnection();
 		//DAO호출 (연결도 넘겨줘야함)
-		int result = cDao.insertCustomer(conn, customer);
+		//int result = cDao.insertCustomer(conn, customer);
 		//커밋/롤백
-		if(result > 0) {
+		//if(result > 0) {
 			//성공 = 커밋
-			jdbcTemplate.comit(conn);
-		} else {
+			//jdbcTemplate.comit(conn);
+		//} else {
 			//실패 = 롤백
-			jdbcTemplate.rollback(conn);
+			//jdbcTemplate.rollback(conn);
+		//}
+		//jdbcTemplate.close(conn);
+		//return result;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = cDao.insertCustomer(session, customer);
+		if(result>0) {
+			session.commit();
+		} else {
+			session.rollback();
 		}
-		jdbcTemplate.close(conn);
+		session.close();
 		return result;
 	}
 
 	public Customer selectOneById(String customerId) {
 		//연결생성
-		Connection conn = jdbcTemplate.createConnection();
+		//Connection conn = jdbcTemplate.createConnection();
 		//DAO호출
-		Customer customer = cDao.selectOneById(conn, customerId);
+		//Customer customer = cDao.selectOneById(conn, customerId);
 		//커밋/롤백은 SELECT에서 안해줘도 된다. 할 필요가 없음 저장하고 롤백할 필요 없으니까
-		jdbcTemplate.close(conn);
+		//jdbcTemplate.close(conn);
+		//return customer;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		Customer customer = cDao.selectOneById(session, customerId);
 		return customer;
 	}
 
 	public int deleteCustomer(String customerId) {
 		//연결생성
-		Connection conn = jdbcTemplate.createConnection();
+		//Connection conn = jdbcTemplate.createConnection();
 		//DAO호출(연결 넘겨주기)
-		int result = cDao.deleteCustomer(conn, customerId);
+		//int result = cDao.deleteCustomer(conn, customerId);
 		//커밋/롤백
-		if(result>0) {
+		//if(result>0) {
 			//성공 - 커밋
-		} else {
+		//} else {
 			//실패 - 롤백
+		//}
+		//jdbcTemplate.close(conn);
+		//return result;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = cDao.deleteCustomer(session, customerId);
+		if(result>0) {
+			session.commit();
+		} else {
+			session.rollback();
 		}
-		jdbcTemplate.close(conn);
+		session.close();
 		return result;
 	}
 
 	public int updateCustomer(Customer customer) {
 		//연결생성
-		Connection conn = jdbcTemplate.createConnection();
+		//Connection conn = jdbcTemplate.createConnection();
 		//DAO호출
-		int result = cDao.updateCustomer(conn,customer);
+		//int result = cDao.updateCustomer(conn,customer);
 		//커밋/롤백
-		if(result>0) {
+		//if(result>0) {
 			//성공 - 커밋
-			jdbcTemplate.comit(conn);
-		} else {
+			//jdbcTemplate.comit(conn);
+		//} else {
 			//실패 - 롤백
-			jdbcTemplate.rollback(conn);
+			//jdbcTemplate.rollback(conn);
+		//}
+		//jdbcTemplate.close(conn); 
+		//return result;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = cDao.updateCustomer(session, customer);
+		if(result>0) {
+			session.commit();
+		} else {
+			session.rollback();
 		}
-		jdbcTemplate.close(conn); 
+		session.close();
 		return result;
 	}
 

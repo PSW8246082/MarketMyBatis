@@ -51,8 +51,8 @@
             
 			<form action="/customer/mypage.do">
 
-                <h2>마이페이지</h2>
-                <hr>
+<!--                 <h2>마이페이지</h2> -->
+<!--                 <hr> -->
                 <div id="mypage1">
                     <div id="left">
                         <div id="top">
@@ -62,7 +62,7 @@
                         <div id="bottom">
                             <div id="bottom1">
                                 <button><a href="#">전체등급</a></button>
-                                <button><a href="#">다음달 예상등급</a></button>
+                                <button><a href="/customer/myInfo.do">회원정보조회</a></button>
                     
                             </div>
                             <div id="bottom2">

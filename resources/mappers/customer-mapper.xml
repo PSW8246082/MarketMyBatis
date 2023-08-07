@@ -1,1 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <mapper namespace="CustomerMapper">
+    <resultMap type="customer.model.vo.Customer" id="customerResultMap">
+    <id property="customerId" 		   column="CUSTOMER_ID" />
+  	<result property="customerPw"      column="CUSTOMER_PW" />
+  	<result property="customerName"    column="CUSTOMER_NAME" />
+  	<result property="customerNo"      column="CUSTOMER_NO" />
+  	<result property="customerGender"  column="CUSTOMER_GENDER" />
+  	<result property="customerEmail"   column="CUSTOMER_EMAIL" />
+  	<result property="customerPhone"   column="CUSTOMER_PHONE" />
+  	<result property="customerDate"    column="CUSTOMER_DATE" />
+  	<result property="updateDate" 	   column="UPDATE_DATE" />
+  	<result property="customerYn" 	   column="CUSTOMER_YN" />
+  </resultMap>
+  
+  
+<!--   생략가능 parameterType = "com.kh.memeber.moel.vo.Member" -->
+	<insert id="insertCustomer"> 
+		INSERT INTO CUSTOMER_TBL
+		VALUES(#{customerId},#{customerPw},#{customerName},#{customerNo},#{customerGender},#{customerEmail},#{customerPhone},DEFAULT,DEFAULT,DEFAULT)
+  	</insert>
+  	
+  	
+  	<update id= "updateCustomer">
+  		UPDATE CUSTOMER_TBL SET CUSTOMER_PW = #{customerPw}, CUSTOMER_NAME = #{customerName}, CUSTOMER_EMAIL = #{customerEmail} ,CUSTOMER_PHONE = #{memberPhone} WHERE MEMBER_ID = #{memberId}
+  	</update>
+  	
+  	
+  	
+  
+<!--   생략가능 parameterType = "com.kh.memeber.moel.vo.Member" -->
+<!--   	컬러명과 필드명이 같을때 사용함 -> resultType="com.kh.member.model.vo.Member" -->
+  	<select id= "selectCheckLogin" resultMap="customerResultMap">
+  		SELECT * FROM CUSTOMER_TBL WHERE CUSTOMER_ID = #{customerId } AND MEMBER_PW = #{customerPw }	
+  	</select>
+  	
+  	
+  	<delete id="deleteCustomer">
+  		DELETE FROM CUSTOMER_TBL WHERE CUSTOMER_ID = #{value}
+  	</delete>
+  	
+  	
+  	<select id="selectOneById" resultMap="customerResultMap">
+  		SELECT * FROM CUSTOMER_TBL WHERE CUSTOMER_ID = #{customerId}
+  	</select>
+  	
+  	
+  	
+  	
+  
+ </mapper>
