@@ -31,7 +31,7 @@ public class SignupContolloer extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/costomer/signup.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/costomer/Signup.jsp").forward(request, response);
 	}
 
 	/**

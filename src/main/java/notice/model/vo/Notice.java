@@ -12,7 +12,7 @@ public class Notice {
 	private Timestamp updateDate;
 	private int viewCount;
 	
-	
+	public Notice() {}
 	
 	public Notice(String noticeSubject, String noticeContent) {
 		super();

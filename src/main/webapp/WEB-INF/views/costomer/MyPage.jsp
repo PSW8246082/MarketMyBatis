@@ -62,12 +62,12 @@
                         <div id="bottom">
                             <div id="bottom1">
                                 <button><a href="#">전체등급</a></button>
-                                <button><a href="/customer/myInfo.do">회원정보조회</a></button>
+                                <button><a href="/customer/myInfo.do?costomer-id=${customerId }">회원정보조회</a></button>
                     
                             </div>
                             <div id="bottom2">
                                 <button><a href="javascript:void(0)" onclick="checkDelete();">회원탈퇴</a></button>
-                                <button><a href="/customer/update.do">회원정보수정</a></button>
+                                <button><a href="/customer/update.do?costomer-id=${customerId }">회원정보수정</a></button>
                             </div>
                         </div>
                     </div>

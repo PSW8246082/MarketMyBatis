@@ -159,9 +159,10 @@
 <!--                         </tr> -->
                     </table>
          
-                    <div class="button"><a href="/notice/inquire.do">글쓰기</a></div>
-                    <td colspan="5" align="center">
+                    <div class="button"><a href="/notice/iinsert.do">글쓰기</a></div>
+                    <tr colspan="5" align="center">
 					${pageNavi }
+					</tr>
                     <div class="number">
 <!--                         <a href="#"><</a> -->
 <!--                         <a href="#">1</a> -->

@@ -31,6 +31,14 @@ public class UpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String customerId = request.getParameter("costomer-id");  //매개변수가 있을 경우 jsp에서 ?뒤에를 적어줘야한다.
+		
+		CustomerService service = new CustomerService();
+		Customer customer  = service.selectOneById(customerId); 
+		
+		request.setAttribute("customer", customer);
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/costomer/CustomerModify.jsp");
 		view.forward(request, response);
 	}

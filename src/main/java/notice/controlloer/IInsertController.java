@@ -15,7 +15,7 @@ import notice.model.vo.Notice;
 /**
  * Servlet implementation class InquireController
  */
-@WebServlet("/notice/inquire.do")
+@WebServlet("/notice/iinsert.do")
 public class IInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

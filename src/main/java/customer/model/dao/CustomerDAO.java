@@ -25,7 +25,7 @@ public class CustomerDAO {
 	}
 
 	public int insertCustomer(SqlSession session, Customer customer) {
-		int result = session.insert("CustomerMapper, insertCustomer", customer);
+		int result = session.insert("CustomerMapper.insertCustomer", customer);
 		return result;
 	}
 

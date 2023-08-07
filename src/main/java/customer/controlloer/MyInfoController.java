@@ -31,7 +31,7 @@ public class MyInfoController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String customerId = request.getParameter("customerId");
+		String customerId = request.getParameter("costomer-id");
 		
 		CustomerService service = new CustomerService();
 		Customer customer = service.selectOneById(customerId);

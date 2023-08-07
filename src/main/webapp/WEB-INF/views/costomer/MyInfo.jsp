@@ -50,28 +50,28 @@
 <!--             </header> -->
             <main class="contents">
                 <div class = "member">
-                    <h1 id="signup"><b>회원가입</b></h1>
-                    <p id="p1">필수입력사항</p>
-                    <p id="p2">*</p>
+                    <h1 id="signup"><b>회원정보조회</b></h1>
+<!--                     <p id="p1">필수입력사항</p> -->
+<!--                     <p id="p2">*</p> -->
                     <hr>
                     <!-- 	 1) post로 하면 쿼리스트링이 안보인다. -->
 <!--                     <form action="/customer/myInfo.do" method="post"> -->
                     <!-- 2. 필드 -->
                     <div class="field">
                         <label for="customer-id"><b>*아이디</b></label>
-                        <span class="placehold-text"><input type="text" id="customer-id" name="customer-id"></span> <!--기능을 위한 id, 쿼리스트링 생성을 위한 name -->
+                        <span class="placehold-text"><input type="text" id="customer-id" name="customer-id" value="${customer.customerId}"></span> <!--기능을 위한 id, 쿼리스트링 생성을 위한 name -->
                     </div>
                     <div class="field">
                         <label for="customer-pw"><b>*비밀번호</b></label>
-                        <input class="userpw" type="password" id="customer-pw" name="customer-pw">
+                        <input class="userpw" type="password" id="customer-pw" name="customer-pw" value="${customer.customerPw}">
                     </div>
                     <div class="field">
                         <label for="customer-pw"><b>*비밀번호 재확인</b></label>
-                        <input class="userpw-confirm" type="password" id="customer-pw" name="customer-pw">
+                        <input class="userpw-confirm" type="password" id="customer-pw" name="customer-pw" value="${customer.customerPw}">
                     </div>
                     <div class="field">
                         <label for="customer-name"><b>*이름</b></label>
-                        <input type="text" id="customer-name" name="customer-name">
+                        <input type="text" id="customer-name" name="customer-name" value="${customer.customerName}">
                     </div>
             
                     <!-- 3. 필드(생년월일) -->
@@ -111,7 +111,7 @@
                     <!-- 5. 이메일_전화번호 -->
                     <div class="field">
                         <label for="email"><b id="email">본인 확인 이메일<small>(선택)</small></b></label>
-                        <input type="email" id="email" name="email" placeholder="선택입력">
+                        <input type="email" id="email" name="email" placeholder="선택입력" value="${customer.customerEmail}">
                     </div>
                     
                     <div class="field tel-number">
@@ -120,14 +120,14 @@
                             <option value="">대한민국 +82</option>
                         </select>
                         <div>
-                            <input type="tel" id="phone" name="phone" placeholder="전화번호 입력">
-                            <input type="button" value="인증번호 받기">
+                            <input type="tel" id="phone" name="phone" placeholder="전화번호 입력" value="${customer.customerPhone}">
+<!--                             <input type="button" value="인증번호 받기"> -->
                         </div>
-                        <input type="number" placeholder="인증번호를 입력하세요">
+<!--                         <input type="number" placeholder="인증번호를 입력하세요"> -->
                     </div>
             
                     <!-- 6. 가입하기 버튼 -->
-                    <input type="submit" value="가입하기">
+<!--                     <input type="submit" value="가입하기"> -->
 <!--                     </form> -->
                 </div>
             </main>

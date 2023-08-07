@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+
+
 import common.SqlSessionTemplate;
 import notice.model.dao.NoticeDAO;
 import notice.model.vo.Notice;
+import notice.model.vo.PageData;
 
 public class NoticeService {
 
@@ -16,13 +19,16 @@ public class NoticeService {
 		nDao = new NoticeDAO();
 	}
 	
-	public List<Notice> selectNoticeList(int currentPage) {
+	public PageData selectNoticeList(int currentPage) {
 		//서비스, DAO, mapper.xml 순으로 코딩
 		//서비스는 연결생성, DAO호출, 연결해제
 		
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		List<Notice> nList = nDao.selectNoticeList(session, currentPage);
-		return nList;
+		String pageNavi = nDao.generatePageNavi(session, currentPage);
+		PageData pd = new PageData(nList, pageNavi);
+		session.close();
+		return pd;
 	}
 
 	public int insertNotice(Notice notice) {

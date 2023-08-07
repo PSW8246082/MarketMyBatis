@@ -52,12 +52,11 @@
 <!--             </header> -->
             <main class="contents">
 
-			<form action="/customer/update.do" method="post">
 
 
                 <div class="outer">
                     <div id="joinInfoArea">
-                        <form id="joinForm" 
+                        <form action="/customer/update.do" id="joinForm" 
                         method="post" onsubmit="return validate();">
                             <h2>회원정보수정</h2>
                             <hr>
@@ -108,14 +107,21 @@
                                 <label for="etc">기타</label>
                             </span>
                             <div class="btnArea">
-                                <button id="joinBtn">탈퇴하기</button>
+                                <button id="joinBtn"><a href="javascript:void(0)" onclick="checkDelete();">탈퇴하기</a></button>
                                 <button id="joinBtn">회원정보수정</button>
                             </div>
                         </form>
                     </div>
                 </div>
 
-			</form>
+				<script>
+					function checkDelete() {
+						const customerId = "${sessionScope.customerId}";
+						if(confirm("탈퇴하시겠습니까?")) {
+							location.href = "/customer/delete.do?customerId=" + customerId;
+						}
+					}
+				</script>
 
 
 
