@@ -46,7 +46,7 @@
              <h1>고객센터</h1>
              <ul>
                  <li><a target="iframe1" href="/notice/clist.do"">공지사항</a></li>
-                 <li><a target="iframe1" href="/notice/ilist.do"">1:1문의</a></li>
+                 <li><a target="iframe1" href="/inquiry/ilist.do"">1:1문의</a></li>
                  <li><a target="iframe1" href="#">자유게시판</a></li>
                  <li><a target="iframe1" href="#">자주하는 질문</a></li>
              </ul>

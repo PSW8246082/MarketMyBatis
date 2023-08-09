@@ -1,4 +1,4 @@
-package notice.controlloer;
+package inquiry.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,16 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import inquiry.model.service.InquiryService;
+import inquiry.model.vo.Inquiry;
+import inquiry.model.vo.PageData;
 
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
-import notice.model.vo.PageData;
+
 
 /**
  * Servlet implementation class InquireController
  */
-@WebServlet("/notice/ilist.do")
+@WebServlet("/inquiry/ilist.do")
 public class IListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,16 +40,16 @@ public class IListController extends HttpServlet {
 		String page = request.getParameter("currentPage") != null ? request.getParameter("currentPage") : "1";
 		int currentPage = Integer.parseInt(page);
 		
-		NoticeService service = new NoticeService();
-		PageData pd = service.selectNoticeList(currentPage);
-		List<Notice> nList = pd.getnList();
+		InquiryService service = new InquiryService();
+		PageData pd = service.selectInquiryList(currentPage);
+		List<Inquiry> iList = pd.getiList();
 		String pageNavi = pd.getPageNavi();
 		
-		if(!nList.isEmpty()) {
+		if(!iList.isEmpty()) {
 			//성공 -> inquireList.jsp로 이동
-			request.setAttribute("nList", nList);
+			request.setAttribute("iList", iList);
 			request.setAttribute("pageNavi", pageNavi);
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/inquireList.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/inquiry/inquireList.jsp");
 			view.forward(request, response);
 		} else {
 			//실패 -> 메세지 출력 후 메인으로 이동

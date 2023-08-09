@@ -231,7 +231,7 @@ nav {
 
 .contents {
     width: 1200px;
-    height: 700px;
+    height: 1000px;
     /* background-color: aqua; */
     /* margin: 50px auto; */
 }
@@ -336,11 +336,13 @@ label {
     color: white;
     background-color: #630b74;
     font-size: 1.1em;
-    &:hover {
-        background: rgb(77,77,77);
-        color: #fff;
-    }
 }
+
+.btn-upload:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+}
+
 #file {
     display: none;
 }
@@ -360,11 +362,11 @@ label {
     color: white;
     background-color: #630b74;
     font-size: 1.1em;
-    &:hover {
+}
+.bt_se:hover {
         background: rgb(77,77,77);
         color: #fff;
     }
-}
 
 
 /* 푸터 영역 */

@@ -1,4 +1,4 @@
-package notice.controlloer;
+package inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import inquiry.model.service.InquiryService;
+import inquiry.model.vo.Inquiry;
 
 
 
 /**
  * Servlet implementation class InquireController
  */
-@WebServlet("/notice/iinsert.do")
+@WebServlet("/inquiry/iinsert.do")
 public class IInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,7 +31,7 @@ public class IInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/notice/inquireInsert.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/inquiry/inquireInsert.jsp").forward(request, response);
 	}
 
 	/**
@@ -39,22 +39,22 @@ public class IInsertController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 공지사항 등록
-		doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
-		String noticeSubject = request.getParameter("noticeSubject");
-		String noticeContent = request.getParameter("noticeContent");
+		String inquiryWriter = request.getParameter("writer");
+		String inquirySubject = request.getParameter("title");
+		String inquiryContent = request.getParameter("content");
 		
-		Notice notice = new Notice(noticeSubject, noticeContent);
+		Inquiry inquiry = new Inquiry(inquirySubject, inquiryContent, inquiryWriter);
 		
-		NoticeService service = new NoticeService();
-		int result = service.insertNotice(notice);
+		InquiryService service = new InquiryService();
+		int result = service.insertInquiry(inquiry);
 		if(result > 0) {
 			//성공 -> 문의글 목록으로
-			response.sendRedirect("/notice/ilist.do");
+			response.sendRedirect("/inquiry/ilist.do");
 		} else {
 			//실패 -> 실패 메세지
 			request.setAttribute("msg", "공지사항 등록 실패");
-			request.setAttribute("url", "/notice/list.do");
+			request.setAttribute("url", "/inquiry/list.do");
 			request.getRequestDispatcher("/WEB-INF/views/common/serviceFail.jsp").forward(request, response);
 		}
 	}

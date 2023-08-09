@@ -87,13 +87,13 @@
                             <th class="col4">조회수</th>
                             <th class="col5">작성일</th>
                         </tr>
-                        <c:forEach var="notice" items="${requestScope.nList }">
+                        <c:forEach var="inquiry" items="${requestScope.iList }">
                         <tr>
-                            <td>${notice.noticeNo }</td>
-                            <td><a href="/notice/idetail.do?noticeNo=${notice.noticeNo }">${notice.noticeSubject }</a></td>
-                            <td>${notice.noticeWriter } <img src="" class="face"></td>
-                            <td>${notice.viewCount }</td>
-                            <td>${notice.noticeDate }</td>
+                            <td>${inquiry.inquiryNo }</td>
+                            <td><a href="/inquiry/idetail.do?inquiryNo=${inquiry.inquiryNo }">${inquiry.inquirySubject }</a></td>
+                            <td>${inquiry.inquiryWriter } <img src="" class="face"></td>
+                            <td>${inquiry.viewCount }</td>
+                            <td>${inquiry.inquiryDate }</td>
                         </tr>
                         </c:forEach>
 <!--                         <tr> -->
@@ -159,7 +159,7 @@
 <!--                         </tr> -->
                     </table>
          
-                    <div class="button"><a href="/notice/iinsert.do">글쓰기</a></div>
+                    <div class="button"><a href="/inquiry/iinsert.do">글쓰기</a></div>
                     <tr colspan="5" align="center">
 					${pageNavi }
 					</tr>

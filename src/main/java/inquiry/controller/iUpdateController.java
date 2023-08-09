@@ -1,4 +1,4 @@
-package notice.controlloer;
+package inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import inquiry.model.service.InquiryService;
+import inquiry.model.vo.Inquiry;
 
 /**
  * Servlet implementation class iUpdateController
  */
-@WebServlet("/notice/iupdate.do")
+@WebServlet("/inquiry/iupdate.do")
 public class iUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,14 +29,14 @@ public class iUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 		
-		NoticeService service = new NoticeService();
-		Notice notice = service.selectOneById(noticeNo);
+		InquiryService service = new InquiryService();
+		Inquiry inquiry = service.selectOneById(inquiryNo);
 		
-		if(notice != null) {
-			request.setAttribute("notice", notice);
-			request.getRequestDispatcher("/WEB-INF/views/notice/inquireUpdate.jsp").forward(request, response);
+		if(inquiry != null) {
+			request.setAttribute("inquiry", inquiry);
+			request.getRequestDispatcher("/WEB-INF/views/inquiry/inquireUpdate.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/common/serviceFail.jsp");
 		}
@@ -48,23 +48,23 @@ public class iUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 		
-		String noticeSubject = request.getParameter("noticeSubject");
-		String noticeContent = request.getParameter("noticeContent");
+		String inquirySubject = request.getParameter("title");
+		String inquiryContent = request.getParameter("content");
 		
-		Notice notice = new Notice(noticeNo, noticeSubject, noticeContent);
+		Inquiry inquiry = new Inquiry(inquiryNo, inquirySubject, inquiryContent);
 		
-		NoticeService service = new NoticeService();
-		int result = service.updateNotice(notice);
+		InquiryService service = new InquiryService();
+		int result = service.updateInquiry(inquiry);
 		
 		if(result > 0) {
 			//성공 -> 상세페이지로 이동
-			response.sendRedirect("/notice/iupdate.do?noticeNo=" + noticeNo);
+			response.sendRedirect("/inquiry/idetail.do?inquiryNo=" + inquiryNo);
 		} else {
 			//실패 -> 에러메세지 출력
 			request.setAttribute("msg", "공지사항 수정 실패");
-			request.setAttribute("url", "/notice/iupdate.do?noticeNo" + noticeNo);
+			request.setAttribute("url", "/inquiry/iupdate.do?inquiryNo" + inquiryNo);
 			request.getRequestDispatcher("/WEB-INF/views/common/serviceFail.jsp").forward(request, response);
 		}
 		

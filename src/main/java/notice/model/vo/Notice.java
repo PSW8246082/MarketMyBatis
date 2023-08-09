@@ -28,8 +28,14 @@ public class Notice {
 		this.noticeSubject = noticeSubject;
 		this.noticeContent = noticeContent;
 	}
+	
 
-
+	public Notice(String noticeSubject, String noticeContent, String noticeWriter) {
+		super();
+		this.noticeSubject = noticeSubject;
+		this.noticeContent = noticeContent;
+		this.noticeWriter = noticeWriter;
+	}
 
 	public int getNoticeNo() {
 		return noticeNo;

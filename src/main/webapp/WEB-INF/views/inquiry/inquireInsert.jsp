@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>inquire</title>
+<title>inquire insert</title>
 <link rel="stylesheet" href="/resources/css/inquire.css">
 </head>
 <body>
@@ -71,7 +71,10 @@
                     <h2>1:1 문의</h2>
                     <hr><br>
                         <div id="write_area">
-                            <form method="post">
+                            <form action="/inquiry/iinsert.do" method="post">
+                            	<div id="in_title">
+                                    <p>Writer</p><textarea name="writer" id="utitle" rows="1" cols="55">${customerId }</textarea>
+                                </div>
                                 <div id="in_title">
                                     <p>제목<b>*</b></p><textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목을 입력해주세요." maxlength="100" required></textarea>
                                 </div>

@@ -38,6 +38,7 @@ public class CustomerService {
 		
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		Customer cOne = cDao.selectCheckLogin(session, market);
+		session.close();
 		return cOne;
 	}
 

@@ -1,4 +1,4 @@
-package notice.controlloer;
+package inquiry.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-
+import inquiry.model.service.InquiryService;
+import inquiry.model.vo.Inquiry;
 
 /**
- * Servlet implementation class IDeleteController
+ * Servlet implementation class IDetailController
  */
-@WebServlet("/notice/idelete.do")
-public class IDeleteController extends HttpServlet {
+@WebServlet("/inquiry/idetail.do")
+public class IDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IDeleteController() {
+    public IDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,17 +29,18 @@ public class IDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		int noticeNo = Integer.parseInt(request.getParameter("inquiryNo"));
 		
-		NoticeService service = new NoticeService();
-		int result = service.deleteNoticeByNo(noticeNo);
+		InquiryService service = new InquiryService();
+		Inquiry inquiry = service.selectOneById(noticeNo);
 		
-		if(result > 0) {
-			response.sendRedirect("/notice/ilist.do");
+		if(inquiry != null) {
+			request.setAttribute("inquiry", inquiry);
+			request.getRequestDispatcher("/WEB-INF/views/inquiry/inquireDetail.jsp").forward(request, response);
 		} else {
-			request.setAttribute("msg", "공지사항 삭제 실패");
-			request.setAttribute("url", "/WEB-INF/views/notice/inquireDetail.jsp");
-			request.getRequestDispatcher("/WEB-INF/views/common/serviceFail.jsp");
+			request.setAttribute("msg", "데이터 조회 실패");
+			request.setAttribute("url", "/inquiry/idetail.do");
+			request.getRequestDispatcher("/WEB-INF/views/common/serviceFail.jsp").forward(request, response);
 		}
 	}
 

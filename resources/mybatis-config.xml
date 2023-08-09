@@ -17,5 +17,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 	<mapper resource ="mappers/customer-mapper.xml"/>
 	<mapper resource ="mappers/noitce-mapper.xml"/>
+	<mapper resource ="mappers/inquiry-mapper.xml"/>
 	</mappers>
 </configuration>
