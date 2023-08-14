@@ -35,7 +35,7 @@ public class MyPageController extends HttpServlet {
 		// 1.with Data (DataBase에서 가져온 데이터를 같이 가져감)
 		// 쿼리문 : SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = ?      
 		// List, int, Member(객체)중 리턴받을 타입 체크
-		String customerId = request.getParameter("costomer-id");   //index에서 가져올 수 있나..? name값 어디서 가져와야하지....
+		String customerId = request.getParameter("costomer-id");   
 		
 		CustomerService service = new CustomerService();
 		Customer customer  = service.selectOneById(customerId); 

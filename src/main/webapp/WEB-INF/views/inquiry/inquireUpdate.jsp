@@ -23,7 +23,7 @@
 			<input type="hidden" name="inquiryNo" value="${inquiry.inquiryNo }"> 
 		
 			<div id="in_title">
-	     		<p>Writer</p><textarea name="writer" id="utitle" rows="1" cols="55">${customerId }</textarea>
+	     		<p>작성자</p><textarea name="writer" id="utitle" rows="1" cols="55" readonly>${requestScope.inquiry.inquiryWriter }</textarea>
 			</div>
 			<div id="in_title">
 			    <p>제목<b>*</b></p><textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목을 입력해주세요." maxlength="100" required>${inquiry.inquirySubject }</textarea>

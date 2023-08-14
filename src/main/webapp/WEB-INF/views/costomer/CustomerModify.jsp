@@ -79,10 +79,10 @@
                             
                             <h4>연락처</h4>
                             <span class="input_area"><input type="tel" maxlength="11" name="phone"
-                                                    placeholder="(-없이)01012345678" value="" readonly></span>
+                                                    placeholder="(-없이)01012345678" ></span>
                                                     
                             <h4>이메일</h4>
-                            <span class="input_area"><input type="email" name="email" value="kh정보@naver.com" readonly></span>
+                            <span class="input_area"><input type="email" name="email" placeholder="kh정보@naver.com"></span>
                             
                 
                             <h4>우편번호</h4>
@@ -108,7 +108,7 @@
                             </span>
                             <div class="btnArea">
                                 <button id="joinBtn"><a href="javascript:void(0)" onclick="checkDelete();">탈퇴하기</a></button>
-                                <button id="joinBtn">회원정보수정</button>
+                                <button type="submit" id="joinBtn">수정하기</button>
                             </div>
                         </form>
                     </div>

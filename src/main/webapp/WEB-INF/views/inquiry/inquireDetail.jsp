@@ -27,14 +27,14 @@
 	           <p>작성일</p><textarea name="date" id="utitle" rows="1" cols="55" readonly>${requestScope.inquiry.inquiryDate }</textarea>
 	        </div>
 	   		<div id="in_title">
-	           <p>글쓴이</p><textarea name="writer" id="utitle" rows="1" cols="55" readonly>${requestScope.inquiry.inquiryWriter }</textarea>
+	           <p>작성자</p><textarea name="writer" id="utitle" rows="1" cols="55" readonly>${requestScope.inquiry.inquiryWriter }</textarea>
 	        </div>
 	        <div id="in_title">
-	            <p>제목<b>*</b></p><textarea name="title" id="utitle" rows="1" cols="55">${inquiry.inquirySubject }</textarea>
+	            <p>제목<b>*</b></p><textarea name="title" id="utitle" rows="1" cols="55" readonly>${inquiry.inquirySubject }</textarea>
 	        </div>
 	        <div class="wi_line"></div>
 	        <div id="in_content">
-	            <p>내용<b>*</b></p><textarea name="content" id="ucontent">${requestScope.inquiry.inquiryContent }</textarea>
+	            <p>내용<b>*</b></p><textarea name="content" id="ucontent" readonly>${requestScope.inquiry.inquiryContent }</textarea>
 	        </div>
 	
 	        <div id="select">

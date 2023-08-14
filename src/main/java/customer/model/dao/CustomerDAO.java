@@ -30,7 +30,7 @@ public class CustomerDAO {
 	}
 
 	public int updateCustomer(SqlSession session, Customer customer) {
-		int result = session.update("CustomerMapper,updateCustomer",customer);
+		int result = session.update("CustomerMapper.updateCustomer",customer);
 		return result;
 	}
 

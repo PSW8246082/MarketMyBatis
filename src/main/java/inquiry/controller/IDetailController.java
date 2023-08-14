@@ -29,10 +29,10 @@ public class IDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noticeNo = Integer.parseInt(request.getParameter("inquiryNo"));
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 		
 		InquiryService service = new InquiryService();
-		Inquiry inquiry = service.selectOneById(noticeNo);
+		Inquiry inquiry = service.selectOneById(inquiryNo);
 		
 		if(inquiry != null) {
 			request.setAttribute("inquiry", inquiry);
